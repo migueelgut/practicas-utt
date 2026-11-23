@@ -1,101 +1,88 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
-    <head>
-        @include('partials.head')
-    </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-            <flux:sidebar.header>
-                <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
-                <flux:sidebar.collapse class="lg:hidden" />
-            </flux:sidebar.header>
+<html lang="es">
+<head>
+    @include('partials.head')
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-800 font-sans antialiased">
+    <!-- Barra de navegación superior estilo Portal Universitario -->
+    <nav class="bg-emerald-900 text-white shadow-md border-b-4 border-amber-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo y Título -->
+                <div class="flex items-center gap-3">
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 font-bold text-lg tracking-tight">
+                        <span class="bg-white text-emerald-900 px-2.5 py-1 rounded font-black text-sm">UTT</span>
+                        <span>Aplicaciones Web</span>
+                    </a>
 
-            <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </flux:sidebar.item>
-                </flux:sidebar.group>
-            </flux:sidebar.nav>
+                    <!-- Enlaces de las Prácticas -->
+                    <div class="hidden md:flex items-center space-x-1 ml-6">
+                        <a href="{{ route('dashboard') }}"
+                           class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('dashboard') ? 'bg-emerald-800 text-white' : 'text-emerald-100 hover:bg-emerald-800/60' }}">
+                            Inicio
+                        </a>
 
-            <flux:spacer />
+                        @if(in_array(auth()->user()->role, ['Administrador', 'Empleado']))
+                            <a href="{{ route('usuarios.index') }}"
+                               class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('usuarios.*') ? 'bg-emerald-800 text-white' : 'text-emerald-100 hover:bg-emerald-800/60' }}">
+                                1.2 Usuarios
+                            </a>
+                        @endif
 
-            <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                </flux:sidebar.item>
+                        @if(in_array(auth()->user()->role, ['Administrador', 'Profesor', 'Alumno']))
+                            <a href="{{ route('academico.index') }}"
+                               class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('academico.*') ? 'bg-emerald-800 text-white' : 'text-emerald-100 hover:bg-emerald-800/60' }}">
+                                1.3 Académico
+                            </a>
+                        @endif
 
-                <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
-                </flux:sidebar.item>
-            </flux:sidebar.nav>
+                        @if(in_array(auth()->user()->role, ['Administrador', 'Empleado']))
+                            <a href="{{ route('productos.index') }}"
+                               class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('productos.*') ? 'bg-emerald-800 text-white' : 'text-emerald-100 hover:bg-emerald-800/60' }}">
+                                1.4 Productos
+                            </a>
+                        @endif
 
-            <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
-        </flux:sidebar>
+                        @if(in_array(auth()->user()->role, ['Administrador', 'Estudiante']))
+                            <a href="{{ route('equipos.index') }}"
+                               class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('equipos.*') ? 'bg-emerald-800 text-white' : 'text-emerald-100 hover:bg-emerald-800/60' }}">
+                                1.5 Equipos
+                            </a>
+                        @endif
 
-        <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden">
-            <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+                        @if(in_array(auth()->user()->role, ['Administrador', 'Jugador']))
+                            <a href="{{ route('gato.index') }}"
+                               class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('gato.*') ? 'bg-emerald-800 text-white' : 'text-emerald-100 hover:bg-emerald-800/60' }}">
+                                1.6 Gato
+                            </a>
+                        @endif
+                    </div>
+                </div>
 
-            <flux:spacer />
+                <!-- Usuario y Cerrar Sesión -->
+                <div class="flex items-center gap-4">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-semibold leading-none">{{ auth()->user()->name }}</p>
+                        <span class="text-xs text-amber-300 font-medium">{{ auth()->user()->role }}</span>
+                    </div>
 
-            <flux:dropdown position="top" align="end">
-                <flux:profile
-                    :initials="auth()->user()->initials()"
-                    icon-trailing="chevron-down"
-                />
-
-                <flux:menu>
-                    <flux:menu.radio.group>
-                        <div class="p-0 text-sm font-normal">
-                            <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
-                                <flux:avatar
-                                    :name="auth()->user()->name"
-                                    :initials="auth()->user()->initials()"
-                                />
-
-                                <div class="grid flex-1 text-start text-sm leading-tight">
-                                    <flux:heading class="truncate">{{ auth()->user()->name }}</flux:heading>
-                                    <flux:text class="truncate">{{ auth()->user()->email }}</flux:text>
-                                </div>
-                            </div>
-                        </div>
-                    </flux:menu.radio.group>
-
-                    <flux:menu.separator />
-
-                    <flux:menu.radio.group>
-                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>
-                            {{ __('Settings') }}
-                        </flux:menu.item>
-                    </flux:menu.radio.group>
-
-                    <flux:menu.separator />
-
-                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <flux:menu.item
-                            as="button"
-                            type="submit"
-                            icon="arrow-right-start-on-rectangle"
-                            class="w-full cursor-pointer"
-                            data-test="logout-button"
-                        >
-                            {{ __('Log out') }}
-                        </flux:menu.item>
+                        <button type="submit"
+                            class="bg-emerald-950 hover:bg-red-700 text-white text-xs font-semibold px-3 py-2 rounded border border-emerald-700 transition cursor-pointer">
+                            Salir
+                        </button>
                     </form>
-                </flux:menu>
-            </flux:dropdown>
-        </flux:header>
+                </div>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {{ $slot }}
+    </main>
 
-        @persist('toast')
-            <flux:toast.group>
-                <flux:toast />
-            </flux:toast.group>
-        @endpersist
-
-        @fluxScripts
-    </body>
+    @fluxScripts
+</body>
 </html>
