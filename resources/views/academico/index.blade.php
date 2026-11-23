@@ -1,83 +1,68 @@
 <x-layouts.app title="Sistema Académico">
-    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div class="bg-white border border-gray-300 rounded p-6">
+        <div class="flex justify-between items-center mb-4">
             <div>
-                <h1 class="text-2xl font-bold text-slate-900">Práctica 1.3: Sistema Académico</h1>
-                <p class="text-sm text-slate-500">
-                    Consulta de calificaciones, faltas y equivalencias automáticas. Rol: <strong class="text-emerald-800">{{ auth()->user()->role }}</strong>
-                </p>
+                <h1 class="text-lg font-bold text-gray-900">Sistema Académico</h1>
+                <p class="text-xs text-gray-500">Rol: {{ auth()->user()->role }}</p>
             </div>
 
             @if(in_array(auth()->user()->role, ['Administrador', 'Profesor']))
-                <a href="{{ route('academico.create') }}"
-                   class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold rounded-lg transition">
-                    + Registrar Alumno
+                <a href="{{ route('academico.create') }}" class="px-3 py-1.5 bg-gray-900 text-white rounded text-sm hover:bg-gray-800">
+                    Registrar Calificación
                 </a>
             @endif
         </div>
 
         @if(session('success'))
-            <div class="mb-4 p-3 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 text-sm">
+            <div class="mb-4 p-2.5 border border-gray-300 bg-gray-100 text-sm text-gray-800 rounded">
                 {{ session('success') }}
             </div>
         @endif
 
         @if(in_array(auth()->user()->role, ['Administrador', 'Profesor']))
-            <div class="flex flex-wrap items-center gap-2 mb-4 text-xs">
-                <span class="font-semibold text-slate-600">Ordenar por:</span>
+            <div class="flex items-center gap-2 mb-4 text-xs">
+                <span class="text-gray-600">Ordenar:</span>
                 <a href="{{ route('academico.index', ['sort' => 'nombre', 'dir' => ($sort === 'nombre' && $dir === 'asc') ? 'desc' : 'asc']) }}"
-                   class="px-3 py-1.5 rounded border {{ $sort === 'nombre' ? 'bg-emerald-50 border-emerald-400 text-emerald-800 font-semibold' : 'bg-slate-50 border-slate-200 text-slate-700' }}">
+                   class="px-2.5 py-1 border border-gray-300 rounded {{ $sort === 'nombre' ? 'bg-gray-200 font-semibold' : 'bg-white' }}">
                     Nombre ({{ $sort === 'nombre' ? strtoupper($dir) : 'ASC' }})
                 </a>
                 <a href="{{ route('academico.index', ['sort' => 'calificacion', 'dir' => ($sort === 'calificacion' && $dir === 'desc') ? 'asc' : 'desc']) }}"
-                   class="px-3 py-1.5 rounded border {{ $sort === 'calificacion' ? 'bg-emerald-50 border-emerald-400 text-emerald-800 font-semibold' : 'bg-slate-50 border-slate-200 text-slate-700' }}">
+                   class="px-2.5 py-1 border border-gray-300 rounded {{ $sort === 'calificacion' ? 'bg-gray-200 font-semibold' : 'bg-white' }}">
                     Calificación ({{ $sort === 'calificacion' ? strtoupper($dir) : 'DESC' }})
                 </a>
                 <a href="{{ route('academico.index', ['sort' => 'faltas', 'dir' => ($sort === 'faltas' && $dir === 'desc') ? 'asc' : 'desc']) }}"
-                   class="px-3 py-1.5 rounded border {{ $sort === 'faltas' ? 'bg-emerald-50 border-emerald-400 text-emerald-800 font-semibold' : 'bg-slate-50 border-slate-200 text-slate-700' }}">
+                   class="px-2.5 py-1 border border-gray-300 rounded {{ $sort === 'faltas' ? 'bg-gray-200 font-semibold' : 'bg-white' }}">
                     Faltas ({{ $sort === 'faltas' ? strtoupper($dir) : 'DESC' }})
                 </a>
             </div>
         @endif
 
-        <div class="overflow-x-auto rounded-lg border border-slate-200">
-            <table class="w-full text-sm text-left text-slate-700">
-                <thead class="bg-slate-50 text-slate-600 text-xs uppercase border-b border-slate-200">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse border border-gray-300">
+                <thead class="bg-gray-100 text-gray-700">
                     <tr>
-                        <th class="px-4 py-3">Nombre del Alumno</th>
-                        <th class="px-4 py-3 text-center">Número de Faltas</th>
-                        <th class="px-4 py-3 text-center">Calificación Numérica</th>
-                        <th class="px-4 py-3 text-center">Equivalencia Alfabética</th>
+                        <th class="border border-gray-300 px-3 py-2">Alumno</th>
+                        <th class="border border-gray-300 px-3 py-2">Faltas</th>
+                        <th class="border border-gray-300 px-3 py-2">Calificación</th>
+                        <th class="border border-gray-300 px-3 py-2">Equivalencia</th>
                         @if(in_array(auth()->user()->role, ['Administrador', 'Profesor']))
-                            <th class="px-4 py-3 text-right">Acciones</th>
+                            <th class="border border-gray-300 px-3 py-2">Acciones</th>
                         @endif
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-200">
+                <tbody>
                     @forelse($registros as $reg)
-                        <tr class="hover:bg-slate-50">
-                            <td class="px-4 py-3 font-medium text-slate-900">{{ $reg->alumno->name }}</td>
-                            <td class="px-4 py-3 text-center">{{ $reg->faltas }}</td>
-                            <td class="px-4 py-3 text-center font-semibold">{{ number_format($reg->calificacion, 1) }}</td>
-                            <td class="px-4 py-3 text-center">
-                                @php
-                                    $badge = match($reg->equivalencia) {
-                                        'AU' => 'bg-emerald-100 text-emerald-800',
-                                        'DE' => 'bg-blue-100 text-blue-800',
-                                        'SA' => 'bg-amber-100 text-amber-800',
-                                        default => 'bg-red-100 text-red-800',
-                                    };
-                                @endphp
-                                <span class="px-2.5 py-1 rounded-full text-xs font-bold {{ $badge }}">
-                                    {{ $reg->equivalencia }}
-                                </span>
-                            </td>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2">{{ $reg->alumno->name }}</td>
+                            <td class="border border-gray-300 px-3 py-2">{{ $reg->faltas }}</td>
+                            <td class="border border-gray-300 px-3 py-2">{{ number_format($reg->calificacion, 1) }}</td>
+                            <td class="border border-gray-300 px-3 py-2 font-semibold">{{ $reg->equivalencia }}</td>
                             @if(in_array(auth()->user()->role, ['Administrador', 'Profesor']))
-                                <td class="px-4 py-3 text-right space-x-2">
-                                    <a href="{{ route('academico.edit', $reg) }}" class="text-amber-600 hover:underline font-medium">Editar</a>
+                                <td class="border border-gray-300 px-3 py-2 space-x-2">
+                                    <a href="{{ route('academico.edit', $reg) }}" class="underline text-gray-700">Editar</a>
                                     <form action="{{ route('academico.destroy', $reg) }}" method="POST" class="inline">
                                         @csrf @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:underline font-medium" onclick="return confirm('¿Eliminar registro académico?')">
+                                        <button type="submit" class="underline text-red-700 cursor-pointer" onclick="return confirm('¿Eliminar registro?')">
                                             Eliminar
                                         </button>
                                     </form>
@@ -86,7 +71,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-4 py-6 text-center text-slate-500">No hay registros académicos capturados.</td>
+                            <td colspan="5" class="border border-gray-300 px-3 py-4 text-center text-gray-500">Sin registros.</td>
                         </tr>
                     @endforelse
                 </tbody>

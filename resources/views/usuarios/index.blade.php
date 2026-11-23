@@ -1,75 +1,64 @@
 <x-layouts.app title="Gestión de Usuarios">
-    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div class="bg-white border border-gray-300 rounded p-6">
+        <div class="flex justify-between items-center mb-4">
             <div>
-                <h1 class="text-2xl font-bold text-slate-900">Práctica 1.2: Gestión de Usuarios</h1>
-                <p class="text-sm text-slate-500">
-                    Control de acceso por roles, Soft Deletes y eliminación permanente. Rol actual: <strong class="text-emerald-800">{{ auth()->user()->role }}</strong>
-                </p>
+                <h1 class="text-lg font-bold text-gray-900">Gestión de Usuarios</h1>
+                <p class="text-xs text-gray-500">Rol: {{ auth()->user()->role }}</p>
             </div>
-            <a href="{{ route('usuarios.create') }}" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-sm font-semibold transition">
-                + Nuevo Usuario
+            <a href="{{ route('usuarios.create') }}" class="px-3 py-1.5 bg-gray-900 text-white rounded text-sm hover:bg-gray-800">
+                Nuevo Usuario
             </a>
         </div>
 
         @if(session('success'))
-            <div class="mb-4 p-3 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 text-sm">
+            <div class="mb-4 p-2.5 border border-gray-300 bg-gray-100 text-sm text-gray-800 rounded">
                 {{ session('success') }}
             </div>
         @endif
         @if(session('error'))
-            <div class="mb-4 p-3 rounded-lg bg-red-50 text-red-800 border border-red-200 text-sm">
+            <div class="mb-4 p-2.5 border border-red-300 bg-red-50 text-sm text-red-700 rounded">
                 {{ session('error') }}
             </div>
         @endif
 
-        <div class="overflow-x-auto rounded-lg border border-slate-200">
-            <table class="w-full text-sm text-left text-slate-700">
-                <thead class="bg-slate-50 text-slate-600 text-xs uppercase border-b border-slate-200">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse border border-gray-300">
+                <thead class="bg-gray-100 text-gray-700">
                     <tr>
-                        <th class="px-4 py-3">ID</th>
-                        <th class="px-4 py-3">Nombre</th>
-                        <th class="px-4 py-3">Correo</th>
-                        <th class="px-4 py-3">Rol</th>
-                        <th class="px-4 py-3">Estado</th>
-                        <th class="px-4 py-3 text-right">Acciones</th>
+                        <th class="border border-gray-300 px-3 py-2">ID</th>
+                        <th class="border border-gray-300 px-3 py-2">Nombre</th>
+                        <th class="border border-gray-300 px-3 py-2">Correo</th>
+                        <th class="border border-gray-300 px-3 py-2">Rol</th>
+                        <th class="border border-gray-300 px-3 py-2">Estado</th>
+                        <th class="border border-gray-300 px-3 py-2">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-200">
+                <tbody>
                     @foreach($users as $u)
-                        <tr class="{{ $u->trashed() ? 'bg-red-50/60 text-slate-400' : 'hover:bg-slate-50' }}">
-                            <td class="px-4 py-3">{{ $u->id }}</td>
-                            <td class="px-4 py-3 font-medium text-slate-900">{{ $u->name }}</td>
-                            <td class="px-4 py-3">{{ $u->email }}</td>
-                            <td class="px-4 py-3">
-                                <span class="px-2.5 py-0.5 text-xs font-medium rounded-full bg-slate-100 text-slate-700 border border-slate-200">
-                                    {{ $u->role }}
-                                </span>
+                        <tr class="{{ $u->trashed() ? 'bg-gray-100 text-gray-400' : '' }}">
+                            <td class="border border-gray-300 px-3 py-2">{{ $u->id }}</td>
+                            <td class="border border-gray-300 px-3 py-2">{{ $u->name }}</td>
+                            <td class="border border-gray-300 px-3 py-2">{{ $u->email }}</td>
+                            <td class="border border-gray-300 px-3 py-2">{{ $u->role }}</td>
+                            <td class="border border-gray-300 px-3 py-2">
+                                {{ $u->trashed() ? 'Deshabilitado' : 'Activo' }}
                             </td>
-                            <td class="px-4 py-3">
-                                @if($u->trashed())
-                                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-800">Deshabilitado (Soft Delete)</span>
-                                @else
-                                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-800">Activo</span>
-                                @endif
-                            </td>
-                            <td class="px-4 py-3 text-right space-x-2">
+                            <td class="border border-gray-300 px-3 py-2 space-x-2">
                                 @if(!$u->trashed())
-                                    <a href="{{ route('usuarios.show', $u) }}" class="text-blue-600 hover:underline font-medium">Ver</a>
-                                    <a href="{{ route('usuarios.edit', $u) }}" class="text-amber-600 hover:underline font-medium">Editar</a>
+                                    <a href="{{ route('usuarios.show', $u) }}" class="underline text-gray-700">Ver</a>
+                                    <a href="{{ route('usuarios.edit', $u) }}" class="underline text-gray-700">Editar</a>
 
-                                    {{-- Botones de eliminación visibles ÚNICAMENTE para Administrador --}}
                                     @if(auth()->user()->role === 'Administrador')
                                         <form action="{{ route('usuarios.destroy', $u) }}" method="POST" class="inline">
                                             @csrf @method('DELETE')
-                                            <button type="submit" class="text-orange-600 hover:underline font-medium" onclick="return confirm('¿Deshabilitar usuario (Soft Delete)?')">
+                                            <button type="submit" class="underline text-red-700 cursor-pointer" onclick="return confirm('¿Deshabilitar usuario?')">
                                                 Deshabilitar
                                             </button>
                                         </form>
                                         <form action="{{ route('usuarios.force-delete', $u->id) }}" method="POST" class="inline">
                                             @csrf @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:underline font-semibold" onclick="return confirm('¿Eliminar PERMANENTEMENTE de la base de datos?')">
-                                                Eliminar Definitivo
+                                            <button type="submit" class="underline text-red-700 cursor-pointer" onclick="return confirm('¿Eliminar definitivamente?')">
+                                                Eliminar
                                             </button>
                                         </form>
                                     @endif
@@ -77,12 +66,12 @@
                                     @if(auth()->user()->role === 'Administrador')
                                         <form action="{{ route('usuarios.restore', $u->id) }}" method="POST" class="inline">
                                             @csrf @method('PATCH')
-                                            <button type="submit" class="text-emerald-700 hover:underline font-semibold">Restaurar</button>
+                                            <button type="submit" class="underline text-gray-800 cursor-pointer">Restaurar</button>
                                         </form>
                                         <form action="{{ route('usuarios.force-delete', $u->id) }}" method="POST" class="inline">
                                             @csrf @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:underline font-medium" onclick="return confirm('¿Eliminar definitivamente?')">
-                                                Eliminar Definitivo
+                                            <button type="submit" class="underline text-red-700 cursor-pointer" onclick="return confirm('¿Eliminar definitivamente?')">
+                                                Eliminar
                                             </button>
                                         </form>
                                     @endif
