@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicoController;
 use App\Http\Controllers\Auth\AdminTwoFactorController;
+use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +66,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/productos/{producto}/editar', [ProductoController::class, 'edit'])->name('productos.edit');
         Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
         Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+    });
+
+    // Práctica 1.5: Reservación de Equipos de Cómputo
+    Route::middleware(['role:Administrador,Estudiante'])->group(function () {
+        Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.index');
+        Route::post('/equipos/{equipo}/reservar', [EquipoController::class, 'reservar'])->name('equipos.reservar');
+        Route::patch('/reservaciones/{reservacion}/cancelar', [EquipoController::class, 'cancelar'])->name('reservaciones.cancelar');
+    });
+
+    Route::middleware(['role:Administrador'])->group(function () {
+        Route::post('/equipos', [EquipoController::class, 'store'])->name('equipos.store');
+        Route::put('/equipos/{equipo}', [EquipoController::class, 'update'])->name('equipos.update');
+        Route::delete('/equipos/{equipo}', [EquipoController::class, 'destroy'])->name('equipos.destroy');
     });
 });
 
