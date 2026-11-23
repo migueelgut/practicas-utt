@@ -3,23 +3,30 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $roles = [
+            ['name' => 'Admin UTT', 'email' => 'admin@utt.edu.mx', 'role' => 'Administrador'],
+            ['name' => 'Empleado Uno', 'email' => 'empleado@utt.edu.mx', 'role' => 'Empleado'],
+            ['name' => 'Profe Kenneth', 'email' => 'profesor@utt.edu.mx', 'role' => 'Profesor'],
+            ['name' => 'Miguel Alumno', 'email' => 'alumno@utt.edu.mx', 'role' => 'Alumno'],
+            ['name' => 'Miguel Estudiante', 'email' => 'estudiante@utt.edu.mx', 'role' => 'Estudiante'],
+            ['name' => 'Jugador Uno', 'email' => 'jugador1@utt.edu.mx', 'role' => 'Jugador'],
+            ['name' => 'Jugador Dos', 'email' => 'jugador2@utt.edu.mx', 'role' => 'Jugador'],
+        ];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($roles as $u) {
+            User::create([
+                'name' => $u['name'],
+                'email' => $u['email'],
+                'password' => Hash::make('password'),
+                'role' => $u['role'],
+            ]);
+        }
     }
 }

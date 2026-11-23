@@ -4,14 +4,16 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
-use Illuminate\Auth\Middleware\RequirePassword;
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Livewire\Livewire;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -28,51 +30,14 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->configureActions();
-        $this->configureViews();
-        $this->configureRateLimiting();
-        $this->configurePasswordConfirmation();
-    }
-
-    /**
-     * Require a recent password confirmation for Livewire requests from pages that require one.
-     */
-    private function configurePasswordConfirmation(): void
-    {
-        Livewire::addPersistentMiddleware([
-            RequirePassword::class,
-        ]);
-    }
-
-    /**
-     * Configure Fortify actions.
-     */
-    private function configureActions(): void
-    {
-        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::createUsersUsing(CreateNewUser::class);
-    }
+        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-    /**
-     * Configure Fortify views.
-     */
-    private function configureViews(): void
-    {
-        Fortify::loginView(fn () => view('pages::auth.login'));
-        Fortify::confirmPasswordView(fn () => view('pages::auth.confirm-password'));
-        Fortify::registerView(fn () => view('pages::auth.register'));
-        Fortify::resetPasswordView(fn () => view('pages::auth.reset-password'));
-        Fortify::requestPasswordResetLinkView(fn () => view('pages::auth.forgot-password'));
-    }
-
-    /**
-     * Configure rate limiting.
-     */
-    private function configureRateLimiting(): void
-    {
-        RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
-        });
+        Fortify::loginView(fn () => view('pages.auth.login'));
+        Fortify::registerView(fn () => view('pages.auth.register'));
+        Fortify::requestPasswordResetLinkView(fn () => view('pages.auth.forgot-password'));
+        Fortify::resetPasswordView(fn (Request $request) => view('pages.auth.reset-password', ['request' => $request]));
+        Fortify::confirmPasswordView(fn () => view('pages.auth.confirm-password'));
 
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
@@ -80,5 +45,32 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($throttleKey);
         });
 
+        // Autenticación por rol: 3 etapas para Administrador y directa para Empleado[cite: 1, 2]
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+                if ($user->role === 'Administrador') {
+                    $code = (string) rand(100000, 999999);
+                    $user->update([
+                        'two_factor_code' => $code,
+                        'two_factor_expires_at' => now()->addMinutes(5),
+                    ]);
+
+                    session(['2fa_user_id' => $user->id]);
+
+                    Mail::raw("Tu código de verificación de Administrador es: {$code}. Expira en 5 minutos.", function ($msg) use ($user) {
+                        $msg->to($user->email)->subject('Código de Verificación - Administrador');
+                    });
+
+                    $signedUrl = URL::temporarySignedRoute('admin.2fa.show', now()->addMinutes(5));
+                    abort(redirect($signedUrl));
+                }
+
+                return $user;
+            }
+
+            return null;
+        });
     }
 }
