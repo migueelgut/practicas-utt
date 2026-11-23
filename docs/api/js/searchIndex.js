@@ -56,6 +56,41 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020validation\u0020rules\u0020used\u0020to\u0020validate\u0020user\u0020emails.",
             "url": "classes/App-Concerns-ProfileValidationRules.html#method_emailRules"
         },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController",
+            "name": "AcademicoController",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html#method_create"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController\u003A\u003Astore\u0028\u0029",
+            "name": "store",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html#method_store"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController\u003A\u003Aedit\u0028\u0029",
+            "name": "edit",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html#method_edit"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html#method_update"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\AcademicoController\u003A\u003Adestroy\u0028\u0029",
+            "name": "destroy",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-AcademicoController.html#method_destroy"
+        },                {
             "fqsen": "\\App\\Http\\Controllers\\Auth\\AdminTwoFactorController",
             "name": "AdminTwoFactorController",
             "summary": "",
@@ -76,6 +111,171 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Http-Controllers-Controller.html"
         },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController",
+            "name": "EquipoController",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController\u003A\u003Astore\u0028\u0029",
+            "name": "store",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html#method_store"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html#method_update"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController\u003A\u003Adestroy\u0028\u0029",
+            "name": "destroy",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html#method_destroy"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController\u003A\u003Areservar\u0028\u0029",
+            "name": "reservar",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html#method_reservar"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\EquipoController\u003A\u003Acancelar\u0028\u0029",
+            "name": "cancelar",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-EquipoController.html#method_cancelar"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController",
+            "name": "GatoController",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Astore\u0028\u0029",
+            "name": "store",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_store"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Aunirse\u0028\u0029",
+            "name": "unirse",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_unirse"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Ashow\u0028\u0029",
+            "name": "show",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_show"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Aestado\u0028\u0029",
+            "name": "estado",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_estado"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Amover\u0028\u0029",
+            "name": "mover",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_mover"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003Aabandonar\u0028\u0029",
+            "name": "abandonar",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_abandonar"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\GatoController\u003A\u003AevaluarEstado\u0028\u0029",
+            "name": "evaluarEstado",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-GatoController.html#method_evaluarEstado"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController",
+            "name": "ProductoController",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html#method_create"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController\u003A\u003Astore\u0028\u0029",
+            "name": "store",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html#method_store"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController\u003A\u003Aedit\u0028\u0029",
+            "name": "edit",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html#method_edit"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html#method_update"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\ProductoController\u003A\u003Adestroy\u0028\u0029",
+            "name": "destroy",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-ProductoController.html#method_destroy"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController",
+            "name": "UserManagementController",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_create"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Astore\u0028\u0029",
+            "name": "store",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_store"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Ashow\u0028\u0029",
+            "name": "show",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_show"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Aedit\u0028\u0029",
+            "name": "edit",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_edit"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_update"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Adestroy\u0028\u0029",
+            "name": "destroy",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_destroy"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003Arestore\u0028\u0029",
+            "name": "restore",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_restore"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserManagementController\u003A\u003AforceDelete\u0028\u0029",
+            "name": "forceDelete",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-UserManagementController.html#method_forceDelete"
+        },                {
             "fqsen": "\\App\\Http\\Middleware\\CheckRole",
             "name": "CheckRole",
             "summary": "",
@@ -85,6 +285,36 @@ Search.appendIndex(
             "name": "handle",
             "summary": "",
             "url": "classes/App-Http-Middleware-CheckRole.html#method_handle"
+        },                {
+            "fqsen": "\\App\\Http\\Requests\\StoreProductoRequest",
+            "name": "StoreProductoRequest",
+            "summary": "",
+            "url": "classes/App-Http-Requests-StoreProductoRequest.html"
+        },                {
+            "fqsen": "\\App\\Http\\Requests\\StoreProductoRequest\u003A\u003Aauthorize\u0028\u0029",
+            "name": "authorize",
+            "summary": "",
+            "url": "classes/App-Http-Requests-StoreProductoRequest.html#method_authorize"
+        },                {
+            "fqsen": "\\App\\Http\\Requests\\StoreProductoRequest\u003A\u003Arules\u0028\u0029",
+            "name": "rules",
+            "summary": "",
+            "url": "classes/App-Http-Requests-StoreProductoRequest.html#method_rules"
+        },                {
+            "fqsen": "\\App\\Http\\Requests\\UpdateProductoRequest",
+            "name": "UpdateProductoRequest",
+            "summary": "",
+            "url": "classes/App-Http-Requests-UpdateProductoRequest.html"
+        },                {
+            "fqsen": "\\App\\Http\\Requests\\UpdateProductoRequest\u003A\u003Aauthorize\u0028\u0029",
+            "name": "authorize",
+            "summary": "",
+            "url": "classes/App-Http-Requests-UpdateProductoRequest.html#method_authorize"
+        },                {
+            "fqsen": "\\App\\Http\\Requests\\UpdateProductoRequest\u003A\u003Arules\u0028\u0029",
+            "name": "rules",
+            "summary": "",
+            "url": "classes/App-Http-Requests-UpdateProductoRequest.html#method_rules"
         },                {
             "fqsen": "\\App\\Livewire\\Actions\\Logout",
             "name": "Logout",
@@ -96,6 +326,126 @@ Search.appendIndex(
             "summary": "Log\u0020the\u0020current\u0020user\u0020out\u0020of\u0020the\u0020application.",
             "url": "classes/App-Livewire-Actions-Logout.html#method___invoke"
         },                {
+            "fqsen": "\\App\\Models\\Calificacion",
+            "name": "Calificacion",
+            "summary": "",
+            "url": "classes/App-Models-Calificacion.html"
+        },                {
+            "fqsen": "\\App\\Models\\Calificacion\u003A\u003Aalumno\u0028\u0029",
+            "name": "alumno",
+            "summary": "",
+            "url": "classes/App-Models-Calificacion.html#method_alumno"
+        },                {
+            "fqsen": "\\App\\Models\\Calificacion\u003A\u003AgetEquivalenciaAttribute\u0028\u0029",
+            "name": "getEquivalenciaAttribute",
+            "summary": "",
+            "url": "classes/App-Models-Calificacion.html#method_getEquivalenciaAttribute"
+        },                {
+            "fqsen": "\\App\\Models\\Calificacion\u003A\u003A\u0024table",
+            "name": "table",
+            "summary": "",
+            "url": "classes/App-Models-Calificacion.html#property_table"
+        },                {
+            "fqsen": "\\App\\Models\\Calificacion\u003A\u003A\u0024fillable",
+            "name": "fillable",
+            "summary": "",
+            "url": "classes/App-Models-Calificacion.html#property_fillable"
+        },                {
+            "fqsen": "\\App\\Models\\Categoria",
+            "name": "Categoria",
+            "summary": "",
+            "url": "classes/App-Models-Categoria.html"
+        },                {
+            "fqsen": "\\App\\Models\\Categoria\u003A\u003Aproductos\u0028\u0029",
+            "name": "productos",
+            "summary": "",
+            "url": "classes/App-Models-Categoria.html#method_productos"
+        },                {
+            "fqsen": "\\App\\Models\\Categoria\u003A\u003A\u0024fillable",
+            "name": "fillable",
+            "summary": "",
+            "url": "classes/App-Models-Categoria.html#property_fillable"
+        },                {
+            "fqsen": "\\App\\Models\\Equipo",
+            "name": "Equipo",
+            "summary": "",
+            "url": "classes/App-Models-Equipo.html"
+        },                {
+            "fqsen": "\\App\\Models\\Equipo\u003A\u003Areservaciones\u0028\u0029",
+            "name": "reservaciones",
+            "summary": "",
+            "url": "classes/App-Models-Equipo.html#method_reservaciones"
+        },                {
+            "fqsen": "\\App\\Models\\Equipo\u003A\u003A\u0024fillable",
+            "name": "fillable",
+            "summary": "",
+            "url": "classes/App-Models-Equipo.html#property_fillable"
+        },                {
+            "fqsen": "\\App\\Models\\Partida",
+            "name": "Partida",
+            "summary": "",
+            "url": "classes/App-Models-Partida.html"
+        },                {
+            "fqsen": "\\App\\Models\\Partida\u003A\u003AjugadorX\u0028\u0029",
+            "name": "jugadorX",
+            "summary": "",
+            "url": "classes/App-Models-Partida.html#method_jugadorX"
+        },                {
+            "fqsen": "\\App\\Models\\Partida\u003A\u003AjugadorO\u0028\u0029",
+            "name": "jugadorO",
+            "summary": "",
+            "url": "classes/App-Models-Partida.html#method_jugadorO"
+        },                {
+            "fqsen": "\\App\\Models\\Partida\u003A\u003A\u0024fillable",
+            "name": "fillable",
+            "summary": "",
+            "url": "classes/App-Models-Partida.html#property_fillable"
+        },                {
+            "fqsen": "\\App\\Models\\Producto",
+            "name": "Producto",
+            "summary": "",
+            "url": "classes/App-Models-Producto.html"
+        },                {
+            "fqsen": "\\App\\Models\\Producto\u003A\u003Acategoria\u0028\u0029",
+            "name": "categoria",
+            "summary": "",
+            "url": "classes/App-Models-Producto.html#method_categoria"
+        },                {
+            "fqsen": "\\App\\Models\\Producto\u003A\u003A\u0024fillable",
+            "name": "fillable",
+            "summary": "",
+            "url": "classes/App-Models-Producto.html#property_fillable"
+        },                {
+            "fqsen": "\\App\\Models\\Reservacion",
+            "name": "Reservacion",
+            "summary": "",
+            "url": "classes/App-Models-Reservacion.html"
+        },                {
+            "fqsen": "\\App\\Models\\Reservacion\u003A\u003Acasts\u0028\u0029",
+            "name": "casts",
+            "summary": "",
+            "url": "classes/App-Models-Reservacion.html#method_casts"
+        },                {
+            "fqsen": "\\App\\Models\\Reservacion\u003A\u003Ausuario\u0028\u0029",
+            "name": "usuario",
+            "summary": "",
+            "url": "classes/App-Models-Reservacion.html#method_usuario"
+        },                {
+            "fqsen": "\\App\\Models\\Reservacion\u003A\u003Aequipo\u0028\u0029",
+            "name": "equipo",
+            "summary": "",
+            "url": "classes/App-Models-Reservacion.html#method_equipo"
+        },                {
+            "fqsen": "\\App\\Models\\Reservacion\u003A\u003A\u0024table",
+            "name": "table",
+            "summary": "",
+            "url": "classes/App-Models-Reservacion.html#property_table"
+        },                {
+            "fqsen": "\\App\\Models\\Reservacion\u003A\u003A\u0024fillable",
+            "name": "fillable",
+            "summary": "",
+            "url": "classes/App-Models-Reservacion.html#property_fillable"
+        },                {
             "fqsen": "\\App\\Models\\User",
             "name": "User",
             "summary": "",
@@ -103,22 +453,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003Acasts\u0028\u0029",
             "name": "casts",
-            "summary": "Get\u0020the\u0020attributes\u0020that\u0020should\u0020be\u0020cast.",
+            "summary": "",
             "url": "classes/App-Models-User.html#method_casts"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003Ainitials\u0028\u0029",
             "name": "initials",
-            "summary": "Get\u0020the\u0020user\u0027s\u0020initials\u0020\u0028usado\u0020por\u0020el\u0020sidebar\u0020de\u0020Flux\u0020UI\u0029",
+            "summary": "",
             "url": "classes/App-Models-User.html#method_initials"
+        },                {
+            "fqsen": "\\App\\Models\\User\u003A\u003Acalificacion\u0028\u0029",
+            "name": "calificacion",
+            "summary": "",
+            "url": "classes/App-Models-User.html#method_calificacion"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003A\u0024fillable",
             "name": "fillable",
-            "summary": "The\u0020attributes\u0020that\u0020are\u0020mass\u0020assignable.",
+            "summary": "",
             "url": "classes/App-Models-User.html#property_fillable"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003A\u0024hidden",
             "name": "hidden",
-            "summary": "The\u0020attributes\u0020that\u0020should\u0020be\u0020hidden\u0020for\u0020serialization.",
+            "summary": "",
             "url": "classes/App-Models-User.html#property_hidden"
         },                {
             "fqsen": "\\App\\Providers\\AppServiceProvider",
@@ -181,11 +536,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app-concerns.html"
         },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth",
-            "name": "Auth",
-            "summary": "",
-            "url": "namespaces/app-http-controllers-auth.html"
-        },                {
             "fqsen": "\\App\\Http\\Controllers",
             "name": "Controllers",
             "summary": "",
@@ -196,10 +546,20 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app-http.html"
         },                {
+            "fqsen": "\\App\\Http\\Controllers\\Auth",
+            "name": "Auth",
+            "summary": "",
+            "url": "namespaces/app-http-controllers-auth.html"
+        },                {
             "fqsen": "\\App\\Http\\Middleware",
             "name": "Middleware",
             "summary": "",
             "url": "namespaces/app-http-middleware.html"
+        },                {
+            "fqsen": "\\App\\Http\\Requests",
+            "name": "Requests",
+            "summary": "",
+            "url": "namespaces/app-http-requests.html"
         },                {
             "fqsen": "\\App\\Livewire\\Actions",
             "name": "Actions",

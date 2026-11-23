@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcademicoController;
 use App\Http\Controllers\Auth\AdminTwoFactorController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\GatoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
@@ -79,6 +80,17 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/equipos', [EquipoController::class, 'store'])->name('equipos.store');
         Route::put('/equipos/{equipo}', [EquipoController::class, 'update'])->name('equipos.update');
         Route::delete('/equipos/{equipo}', [EquipoController::class, 'destroy'])->name('equipos.destroy');
+    });
+
+    // Práctica 1.6: Juego del Gato (Tic-Tac-Toe)
+    Route::middleware(['role:Administrador,Jugador'])->group(function () {
+        Route::get('/gato', [GatoController::class, 'index'])->name('gato.index');
+        Route::post('/gato', [GatoController::class, 'store'])->name('gato.store');
+        Route::post('/gato/{partida}/unirse', [GatoController::class, 'unirse'])->name('gato.unirse');
+        Route::get('/gato/{partida}', [GatoController::class, 'show'])->name('gato.show');
+        Route::get('/gato/{partida}/estado', [GatoController::class, 'estado'])->name('gato.estado');
+        Route::post('/gato/{partida}/mover', [GatoController::class, 'mover'])->name('gato.mover');
+        Route::patch('/gato/{partida}/abandonar', [GatoController::class, 'abandonar'])->name('gato.abandonar');
     });
 });
 
